@@ -4,7 +4,8 @@ function startTraining() {
   if (userName) {
     // Redirect to quiz.html with user's name as a query parameter
     localStorage.setItem("jsonData", JSON.stringify(jsonData));
-    window.location.href = `./page/training-cn/traning-cn.html?name=${encodeURIComponent(userName)}`;
+    localStorage.setItem("username", userName);
+    window.location.href = `./page/training-cn/traning-cn.html`;
   } else {
     alert("Please enter your name to start the training.");
   }

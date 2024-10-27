@@ -1,41 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduBliz Training - Chinese</title>
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  />
-  <link rel="stylesheet" href="./training-cn.css" />
-</head>
-<body class="bg-light d-flex align-items-center justify-content-center vh-100">
-  <!-- Quiz Container -->
-  <div id="quiz-container" class="container text-center">
-    <h1 class="page-title mb-4">EduBliz</h1>
-    <div id="question-counter" class="btn btn-info mb-4">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduBliz Training - Chinese</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./training-cn.css" />
+    <!-- Latest EmailJS SDK from the official CDN -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+  </head>
+  <body
+    class="bg-light d-flex align-items-center justify-content-center vh-100"
+  >
+    <!-- Quiz Container -->
+    <div id="quiz-container" class="container text-center">
+      <h1 class="page-title mb-4">EduBliz</h1>
+      <div id="question-counter" class="btn btn-info mb-4">
         Training 1 of 18
-    </div>
-    <h2 id="greeting" class="mb-4"></h2> <!-- Greeting with the user's name -->
-    <div class="container text-center bg-white p-4 rounded shadow-lg">
-      <div class="image-container mb-4">
-        <img id="quiz-image" src="" alt="Quiz Image" class="img-fluid" />
       </div>
-      <div class="answer-container d-flex flex-wrap justify-content-center mb-4">
-        <button onclick="selectAnswer(0)" id="answer-0" class="btn btn-secondary m-2 answer"></button>
-        <button onclick="selectAnswer(1)" id="answer-1" class="btn btn-secondary m-2 answer"></button>
-        <button onclick="selectAnswer(2)" id="answer-2" class="btn btn-secondary m-2 answer"></button>
-        <button onclick="selectAnswer(3)" id="answer-3" class="btn btn-secondary m-2 answer"></button>
+      <h2 id="greeting" class="mb-4"></h2>
+      <!-- Greeting with the user's name -->
+      <div class="container text-center bg-white p-4 rounded shadow-lg">
+        <div class="image-container mb-4">
+          <img id="quiz-image" src="" alt="Quiz Image" class="img-fluid" />
+        </div>
+        <div
+          class="answer-container d-flex flex-wrap justify-content-center mb-4"
+        >
+          <button
+            onclick="selectAnswer(0)"
+            id="answer-0"
+            class="btn btn-secondary m-2 answer"
+          ></button>
+          <button
+            onclick="selectAnswer(1)"
+            id="answer-1"
+            class="btn btn-secondary m-2 answer"
+          ></button>
+          <button
+            onclick="selectAnswer(2)"
+            id="answer-2"
+            class="btn btn-secondary m-2 answer"
+          ></button>
+          <button
+            onclick="selectAnswer(3)"
+            id="answer-3"
+            class="btn btn-secondary m-2 answer"
+          ></button>
+        </div>
+        <div class="feedback text-center" id="feedback"></div>
+        <button
+          onclick="nextQuestion()"
+          id="next-button"
+          class="btn btn-primary mt-4"
+          style="display: none"
+        >
+          Next Question
+        </button>
       </div>
-      <div class="feedback text-center" id="feedback"></div>
-      <button onclick="nextQuestion()" id="next-button" class="btn btn-primary mt-4" style="display: none">
-        Next Question
-      </button>
+      <audio id="audio"></audio>
     </div>
-    <audio id="audio"></audio>
-  </div>
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
-  <script src="traning-cn.js"></script>
-</body>
+    <script src="traning-cn.js"></script>
+  </body>
 </html>
