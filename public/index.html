@@ -1,69 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Language Quiz</title>
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body
-    class="bg-light d-flex align-items-center justify-content-center vh-100"
-  >
-    <div class="container text-center">
-      <h1 class="page-title mb-4">EduBliz</h1>
-      <div id="question-counter" class="btn btn-info mb-4">
-        Question 1 of 18
-      </div>
-      <div class="container text-center bg-white p-4 rounded shadow-lg">
-        <div class="image-container mb-4">
-          <img id="quiz-image" src="" alt="Quiz Image" class="img-fluid" />
-        </div>
-        <div
-          class="answer-container d-flex flex-wrap justify-content-center mb-4"
-        >
-          <button
-            onclick="selectAnswer(0)"
-            id="answer-0"
-            class="btn btn-secondary m-2 answer"
-          ></button>
-          <button
-            onclick="selectAnswer(1)"
-            id="answer-1"
-            class="btn btn-secondary m-2 answer"
-          ></button>
-          <button
-            onclick="selectAnswer(2)"
-            id="answer-2"
-            class="btn btn-secondary m-2 answer"
-          ></button>
-          <button
-            onclick="selectAnswer(3)"
-            id="answer-3"
-            class="btn btn-secondary m-2 answer"
-          ></button>
-        </div>
-        <div class="feedback text-center" id="feedback"></div>
-        <button
-          onclick="nextQuestion()"
-          id="next-button"
-          class="btn btn-primary mt-4"
-          style="display: none"
-        >
-          Next Question
-        </button>
-      </div>
-      <audio id="audio"></audio>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduBliz - Welcome</title>
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  />
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+  <div class="container text-center">
+    <h1 class="mb-4">Welcome to EduBliz!</h1>
+    <p>Please enter your name to start the training:</p>
+    <input type="text" id="username" class="form-control mb-3" placeholder="Your Name" />
+    <button onclick="startTraining()" class="btn btn-primary">Start Training</button>
+  </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="index.js"></script>
-  </body>
+  <script src="index.js"></script>
+</body>
 </html>
