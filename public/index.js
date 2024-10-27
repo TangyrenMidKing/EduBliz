@@ -150,7 +150,8 @@ loadQuestion();
 function generateQuestionSequence(data) {
   const baseQuestions = data.image.map((image, idx) => ({
     image_url: image.image_url,
-    voice_url: data.chinese_voice.find((voice) => voice.id === image.id).audio_url,
+    voice_url: data.chinese_voice.find((voice) => voice.id === image.id)
+      .audio_url,
     options: [
       data.chinese.find((item) => item.id === image.id),
       ...getRandomDistractors(data, image.id),
@@ -160,7 +161,9 @@ function generateQuestionSequence(data) {
 
   questionSequence = [];
   for (let i = 0; i < rounds; i++) {
-    const shuffledRound = shuffleWithNoConsecutiveDuplicates([...baseQuestions]);
+    const shuffledRound = shuffleWithNoConsecutiveDuplicates([
+      ...baseQuestions,
+    ]);
     questionSequence = questionSequence.concat(shuffledRound);
   }
 }
@@ -171,8 +174,9 @@ function shuffleWithNoConsecutiveDuplicates(array) {
 
   while (hasConsecutiveDuplicates) {
     shuffled.sort(() => Math.random() - 0.5);
-    hasConsecutiveDuplicates = shuffled.some((item, idx) => 
-      idx > 0 && item.correctAnswerId === shuffled[idx - 1].correctAnswerId
+    hasConsecutiveDuplicates = shuffled.some(
+      (item, idx) =>
+        idx > 0 && item.correctAnswerId === shuffled[idx - 1].correctAnswerId
     );
   }
   return shuffled;
@@ -198,20 +202,22 @@ function loadQuestion() {
   answers.forEach((answer, i) => {
     const answerBtn = document.getElementById(`answer-${i}`);
     answerBtn.textContent = answer.character;
-    answerBtn.dataset.correct = answer.id === currentQuestion.correctAnswerId ? "true" : "false";
+    answerBtn.dataset.correct =
+      answer.id === currentQuestion.correctAnswerId ? "true" : "false";
   });
 
   // Update question counter
-  document.getElementById("question-counter").textContent = 
-    `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+  document.getElementById("question-counter").textContent = `Question ${
+    currentQuestionIndex + 1
+  } of ${totalQuestions}`;
 
   currentQuestionIndex++;
 }
 
 function endQuiz() {
-  document.querySelector(".container").innerHTML = "<h2>Quiz Completed! Great job!</h2>";
+  document.querySelector(".container").innerHTML =
+    "<h2>Quiz Completed! Great job!</h2>";
 }
-
 
 function selectAnswer(index) {
   const selected = document.getElementById(`answer-${index}`);
@@ -225,10 +231,16 @@ function selectAnswer(index) {
     feedback.textContent = "✔️ Correct!";
     feedback.classList.add("text-success", "show");
     selected.classList.add("btn-success");
+
+    // Display the "Next Question" button only if the answer is correct
+    document.getElementById("next-button").style.display = "block";
   } else {
     feedback.textContent = "❌ Incorrect!";
     feedback.classList.add("text-danger", "show");
     selected.classList.add("btn-danger");
+
+    // Hide the "Next Question" button if the answer is incorrect
+    document.getElementById("next-button").style.display = "none";
   }
 
   // Hide incorrect answers and enlarge the correct one
@@ -239,9 +251,6 @@ function selectAnswer(index) {
       btn.style.display = "none"; // Hide incorrect answers
     }
   });
-
-  // Display the next question button only after an answer is selected
-  document.getElementById("next-button").style.display = "block";
 }
 
 function nextQuestion() {
